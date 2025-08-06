@@ -28,14 +28,31 @@ namespace demo2025_2.Controllers
                 People = new List<PeopleViewModel>
                 {
 
-                new PeopleViewModel{Id= 1,Name="Bill"},
-                new PeopleViewModel{ Id = 2, Name = "Steve" },
-                new PeopleViewModel{ Id = 3, Name = "John" }
+                new PeopleViewModel{Id= 1,Name="Bill", IsRenter=false},
+                new PeopleViewModel{ Id = 2, Name = "Steve", IsRenter=true },
+                new PeopleViewModel{ Id = 3, Name = "John", IsRenter=false }
                 },
                 Customer = new CustomerViewModel { Id = 4, Name = "Kyle", Role = "Guy" }
 
             };
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateRenterStatus(int id, bool isRenter)
+        {
+            try
+            {
+                //get person 
+                //if found person,
+                //   set to new status, 
+                //   save context
+                return Json(new { success = true, message = "Person has been updated." });
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false, message = "Person not found." });
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

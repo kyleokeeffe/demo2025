@@ -22,6 +22,9 @@
         <th>
             Name
         </th>
+        <th>
+            Renter
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -35,8 +38,59 @@
             <td>
                 @person.Name
             </td>
+            <td>
+                <input 
+                    type="checkbox" 
+                    class="chkRenter" 
+                    
+                           @(person.IsRenter ? "checked" : "")
+                    data-person-id="@person.Id"/>
+            </td>
 
         </tr>
     }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+
+    $(document).ready(function(){
+    console.log('yup')});
+       // $('.chkRenter').on('change',function(){
+       //     debugger;
+       //     const chk=$(this);
+       //     const id = chk.data('person-id');
+       //     const isChecked=chk.isChecked;
+       //     onUpdateRenterStatus(id, isChecked);
+       // })
+
+
+
+
+    function onUpdateRenterStatus(id, isRenter){
+        $.ajax({
+
+
+            URL:'@Url.Action("UpdateRenterStatus","Home")',
+            type:'POST',
+            data:{id: id, isRenter:isRenter},
+            success:function(R){
+                console.log('succeeded ');
+                if (R.success==true){
+                    console.log('success');
+                    //refresh data with get
+                }else if (R.success=false){
+                    console.log('failed');
+                }
+            },
+            error:function(R){
+                console.log('failed' + R.message);
+            }
+        })
+
+    }
+    </script>
+
+
+}
