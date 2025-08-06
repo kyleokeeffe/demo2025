@@ -7,6 +7,19 @@
     ViewData["Title"] = "Privacy Policy";
 }
 @model PrivacyPageViewModel
+
+
+
+@section Scripts{
+    <script>
+
+    $(document).ready( function () {
+        $('#myTable').DataTable({
+            paging:true
+        });
+    } );
+</script>
+}
 <h1>@ViewData["Title"]</h1>
 
 <p>Use this page to detail your site's privacy policy.</p>

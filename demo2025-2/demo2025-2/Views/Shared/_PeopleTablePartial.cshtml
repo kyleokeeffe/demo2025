@@ -6,7 +6,26 @@
 @{
 }
 
-<table>
+
+
+
+
+
+
+<table id="myTable">
+    <thead>
+
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+
     <@foreach (var person in Model)
     {
         <tr>
@@ -19,4 +38,5 @@
 
         </tr>
     }
+    </tbody>
 </table>
