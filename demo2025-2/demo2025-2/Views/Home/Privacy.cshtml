@@ -1,0 +1,21 @@
+﻿
+<!--TODO: import jquery datatable--> 
+<!--TODO: Write ajax call to update only table partial-->
+<!--TODO: Create API servere side to handle data calls-->
+@using demo2025_2.ViewModels
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+@model PrivacyPageViewModel
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<label>User: @Model.Customer.Name</label>
+<br />
+<label>
+    Role: @Model.Customer.Role
+</label>
+
+<input type="text" id="txtOne" />
+
+<partial name="_PeopleTablePartial" model="@Model.People"></partial>
